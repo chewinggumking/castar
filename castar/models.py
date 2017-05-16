@@ -33,7 +33,8 @@ class StarProfile(models.Model):
         today = date.today()
         age = relativedelta(today, self.date_of_birth)
         return str(age.years)
+    age = property(starage)
 
 
     def __str__(self):
-        return "Name: {0} Age: {1} Gender {2}".format(self.user, self.starage(), self.gender)
+        return "Name: {0} Age: {1} Gender {2}".format(self.user, self.age, self.gender)
