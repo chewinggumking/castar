@@ -35,6 +35,9 @@ class StarProfile(models.Model):
         return str(age.years)
     age = property(starage)
 
+    def mobile(self):
+        return "+91 {0}".format(self.mobile_number)
+
 
     def __str__(self):
         return "Name: {0} Age: {1} Gender {2}".format(self.user, self.age, self.gender)
