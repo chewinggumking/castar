@@ -14,3 +14,5 @@ def homeview(request):
     "pics":pics,
     }
     return render(request, 'index.html', context)
+
+
