@@ -38,3 +38,23 @@ class StarProfile(models.Model):
 
     def __str__(self):
         return "Name: {0} Age: {1} Gender {2}".format(self.user, self.age, self.gender)
+
+
+class StarPhotos(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    PHOTO_CATEGORY = (
+    ('HS', "Head Shot"),
+    ('WP', "Western Party Wear"),
+    ('IP', "Indian Party Wear"),
+    ('SW', "Swim Wear"),
+    ('CW', "Casual Wear"),
+    )
+    category = models.CharField(max_length=2, choices=PHOTO_CATEGORY, default='CW')
+    # This FileField should preferaby be changed to ImageField with pillow installed.
+    photos = models.FileField(max_length=200, upload_to='images/')
+
+    def __str__(self):
+        return "Images for {0}".format(self.user)
+
+    class Meta:
+        verbose_name_plural = "Star Photos"

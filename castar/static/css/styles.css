@@ -1,0 +1,42 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.mysidebar {
+  background-color: #acc8ce;
+
+}
+
+.mylistheader {
+  background-color: #769ad3;
+  color: #ffffff;
+}
+
+.errorlist {
+  color: #ff0000;
+}
+
+.table-head {
+  text-align: center;
+}
+
+.author-list{
+  color: #d9534f;
+
+  }
+
+  .author-list:hover{
+    color: #25c117;
+    }
+
+
+.badge{
+  background-color: #ca1914;
+  float: right;
+}
+
+.btn{
+  float: center;
+}
