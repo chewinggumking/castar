@@ -6,7 +6,7 @@ from django.db.models.base import ModelBase
 from dateutil.relativedelta import relativedelta
 from datetime import date
 # Importing a mobile validator for mobile number field to check if it match Indian Mobile numbers
-from .validators import mobile_val
+from .validators import mobile_val, photo_nums
 
 # Create your models here.
 
