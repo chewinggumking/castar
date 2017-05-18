@@ -5,9 +5,11 @@
 {% block content %}
 
 <h1>{{heading}}</h1>
-  {{star.user}}<br>{{star.age}}<br>{{star.mobile_number}}
+  {{star.user}}<br>{{star.age}}<br>{{star.mobile_number}}<br>
+  {{star.get_gender_display}}<br>{{user}}
+  {% for pic in pics %}
   <p>
-<img src="{{pics.photos.url}}" class="img-responsive">
+<img src="{{pic.photos.url}}" class="img-responsive">
   </p>
-
+  {% endfor %}
 {% endblock content %}
