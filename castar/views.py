@@ -4,7 +4,7 @@ from .models import StarProfile, StarPhotos
 # Create your views here.
 def homeview(request):
     star = StarProfile.objects.get(id=1)
-    pics = StarPhotos.objects.get(user=star.user)
+    pics = StarPhotos.objects.filter(user=star.user)
     page_title = "Carstar | Your Path to Stardom"
     heading = "Welcome to Castar - India's Top Casting Site"
     context = {
@@ -14,5 +14,3 @@ def homeview(request):
     "pics":pics,
     }
     return render(request, 'index.html', context)
-
-

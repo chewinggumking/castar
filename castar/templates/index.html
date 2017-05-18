@@ -6,8 +6,9 @@
 
 <h1>{{heading}}</h1>
   {{star.user}}<br>{{star.age}}<br>{{star.mobile_number}}
+{% for pic in pics %}
   <p>
-<img src="{{pics.photos.url}}" class="img-responsive">
+<img src="{{pic.photos.url}}" class="img-responsive">
   </p>
-
+{% endfor %}
 {% endblock content %}

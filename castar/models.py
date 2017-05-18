@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.exceptions import ValidationError
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models.base import ModelBase
 from dateutil.relativedelta import relativedelta
 from datetime import date
 # Importing a mobile validator for mobile number field to check if it match Indian Mobile numbers
@@ -43,7 +45,20 @@ class StarProfile(models.Model):
         return "Name: {0} Age: {1} Gender {2}".format(self.user, self.age, self.gender)
 
 
+def photo_count(self):
+    theModel = self.__class__
+    # print (type(theModel))
+    print (isinstance(theModel, StarPhotos))
+    if isinstance(theModel, self.__class__):
+        refModel = theModel.objects.filter(user=self.user)
+        picCount = refModel.count()
+        if picCount ==4:
+            print(picCount)
+            raise ValidationError ("You have already uploaded 20 photos. Delete some to upload more.")
+
+
 class StarPhotos(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     PHOTO_CATEGORY = (
     ('HS', "Head Shot"),
@@ -54,10 +69,15 @@ class StarPhotos(models.Model):
     )
     category = models.CharField(max_length=2, choices=PHOTO_CATEGORY, default='CW')
     # This FileField should preferaby be changed to ImageField with pillow installed.
-    photos = models.FileField(max_length=200, upload_to='images/')
+    photos = models.FileField(max_length=200, upload_to='images/',)
 
     def __str__(self):
         return "Images for {0}".format(self.user)
+
+
+    def clean(self,):
+         photo_count(self)
+
 
     class Meta:
         verbose_name_plural = "Star Photos"
