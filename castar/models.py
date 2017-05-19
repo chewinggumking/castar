@@ -6,7 +6,7 @@ from django.db.models.base import ModelBase
 from dateutil.relativedelta import relativedelta
 from datetime import date
 # Importing a mobile validator for mobile number field to check if it match Indian Mobile numbers
-from .validators import mobile_val, photo_nums
+from .validators import mobile_val
 
 # Create your models here.
 
@@ -45,16 +45,16 @@ class StarProfile(models.Model):
         return "Name: {0} Age: {1} Gender {2}".format(self.user, self.age, self.gender)
 
 
-def photo_count(self):
-    theModel = self.__class__
-    # print (type(theModel))
-    print (isinstance(theModel, StarPhotos))
-    if isinstance(theModel, self.__class__):
-        refModel = theModel.objects.filter(user=self.user)
-        picCount = refModel.count()
-        if picCount ==4:
-            print(picCount)
-            raise ValidationError ("You have already uploaded 20 photos. Delete some to upload more.")
+# def photo_count(self):
+#     theModel = self.__class__
+#     # print (type(theModel))
+#     print (isinstance(theModel, StarPhotos))
+#     if isinstance(theModel, self.__class__):
+#         refModel = theModel.objects.filter(user=self.user)
+#         picCount = refModel.count()
+#         if picCount ==4:
+#             print(picCount)
+#             raise ValidationError ("You have already uploaded 20 photos. Delete some to upload more.")
 
 
 class StarPhotos(models.Model):
@@ -75,8 +75,10 @@ class StarPhotos(models.Model):
         return "Images for {0}".format(self.user)
 
 
-    def clean(self,):
-         photo_count(self)
+    # def clean(self,):
+    #     # checkUser = self.cleaned_data()
+    #     # print (checkUser)
+    #     photo_count(self)
 
 
     class Meta:
