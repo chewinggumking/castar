@@ -22,8 +22,8 @@ class StarPhotosForm(forms.ModelForm):
         if 'user' in self.cleaned_data:
             refModel = StarPhotos.objects.filter(user=self.cleaned_data['user'])
             picCount = refModel.count()
-            if picCount ==20:
-                raise ValidationError ("""You have already uploaded 20 photos.
+            if picCount ==10:
+                raise ValidationError ("""You have already uploaded 10 photos.
                 Delete some to upload more.""")
 
             return self.cleaned_data['user']
