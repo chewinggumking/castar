@@ -5,8 +5,8 @@
 {% block content %}
 
 <h1>{{heading}}</h1>
-
-  {{star.user}}<br>{{star.age}}<br>{{star.mobile_number}}
+  <a href = "{% url 'logout' %}">Logout</a>
+  {{star.user.first_name}}<br>{{star.age}}<br>{{star.mobile_number}}
 {% for pic in pics %}
   <p>
 <img src="{{pic.photos.url}}" class="img-responsive">
