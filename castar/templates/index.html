@@ -2,15 +2,26 @@
 
   {% block title %} {{page_title}} {% endblock title %}
 
+
+{% block sidebar %}
+  <h4>{{heading}}</h4>
+  Talent: {{star.user.first_name}} {{star.user.last_name}}<br>
+  Age: {{star.age}}<br>
+  Tel No. {{star.mobile_number}}
+  <p><a href = "{% url 'logout' %}">Logout</a></p>
+
+
+
+
+{% endblock sidebar %}
+
+
 {% block content %}
-
-<h1>{{heading}}</h1>
-  <a href = "{% url 'logout' %}">Logout</a>
-  {{star.user.first_name}}<br>{{star.age}}<br>{{star.mobile_number}}
-{% for pic in pics %}
-  <p>
-<img src="{{pic.photos.url}}" class="img-responsive">
-  </p>
-{% endfor %}
-
+  <div class="container">
+  {% for pic in pics %}
+    <div class=" col-sm-3">
+    <p> <img src="{{pic.photos.url}}" class="img-thumbnail img-responsive"> </p>
+    </div>
+  {% endfor %}
+  </div>
 {% endblock content %}
