@@ -6,6 +6,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.homeview, name = 'homepage' ),
+	url(r'^list/$', views.starlist, name = 'starlist' ),
+	
     
 
 ]

@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+	<head>
 
-  <title>{% block title %}Castar{% endblock title %}</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>Castar | {% block title %}{% endblock title %}</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <!-- Add additional CSS in static file -->
-  {% load staticfiles %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
+		<!-- Add additional CSS in static file -->
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
 
-<body>
+	<body>
 
-  <div class="container-fluid">
+			<div class="container-fluid">
 
-    <div class="row">
-      <div class="col-sm-4 mysidebar">
-      {% block sidebar %} {% endblock sidebar %}
-      </div>
+				<div class="row">
+					<div class="col-sm-4 mysidebar">
+					{% block sidebar %}
+							
+							<div class="container">
+							  <h4>Welcome to Castar - India's Top Casting Site</h4>
+								{% if user.is_staff %}
+									<strong>Admin:</strong> {{user.first_name}} {{user.last_name}}<br>
+									<p><a href = "{% url 'starlist' %}">Talent List</a></p>
+								{% else %}
+									{% block talent %}
+										Talent: {{user.first_name}} {{user.last_name}}<br>
+										Age: {{user.starprofile.age}}<br>
+										Tel No. {{user.starprofile.mobile_number}}<br>
+									{% endblock talent %}
+								{% endif %}
+							  
+							  <p><a href = "{% url 'logout' %}">Logout</a></p>
+							</div>
 
-      <div class="col-sm-8">
-      {% block content %}{% endblock content %}
-      </div>
+					{% endblock sidebar %}
 
-    </div>
+					</div>
 
-  </div>
-</body>
+					<div class="col-sm-8">
+					{% block content %}{% endblock content %}
+					</div>
+
+				</div>
+
+			</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
 </html>

@@ -45,16 +45,6 @@ class StarProfile(models.Model):
         return "Name: {0} Age: {1} Gender {2}".format(self.user, self.age, self.gender)
 
 
-# def photo_count(self):
-#     theModel = self.__class__
-#     # print (type(theModel))
-#     print (isinstance(theModel, StarPhotos))
-#     if isinstance(theModel, self.__class__):
-#         refModel = theModel.objects.filter(user=self.user)
-#         picCount = refModel.count()
-#         if picCount ==4:
-#             print(picCount)
-#             raise ValidationError ("You have already uploaded 20 photos. Delete some to upload more.")
 
 
 class StarPhotos(models.Model):
