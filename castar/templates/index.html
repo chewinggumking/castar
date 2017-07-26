@@ -7,14 +7,16 @@
 
 	{% block content %}
 	  <div class="container">
-		{% if pics %}	
+	{% if user.is_staff %}
+		<h1> Site Administrators do not have any pics.</h1>
+		{% elif pics %}	
 		  {% for pic in pics %}
 			<div class=" col-sm-3">
 			<p> <img src="{{pic.photos.url}}" class="img-thumbnail img-responsive"> </p>
 			</div>
 		  {% endfor %}
 		{% else %}
-			<h1> Site administrators have no pictures</h1>
+			<h1> You have not uploaded any pictures.</h1>
 		{% endif %}
 	  </div>
 	{% endblock content %}
