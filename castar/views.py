@@ -39,3 +39,12 @@ def starlist(request):
 		
 	}
 	return render(request, 'list.html', context)
+
+
+def uploadpics(request, userid):
+	starpics = StarPhotos.objects.filter(user=int(userid))
+	context = {
+		"pics": starpics,
+		"title": "Upload Your Pics here"
+	}
+	return render(request, "uploadform.html", context)

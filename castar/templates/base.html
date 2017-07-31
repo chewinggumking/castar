@@ -32,7 +32,8 @@
 										Tel No. {{user.starprofile.mobile_number}}<br>
 									{% endblock talent %}
 								{% endif %}
-							  
+								<br/>
+							  <p><a href = "{% url 'uploadpics' user.id %}"> Upload Pics</a></p>
 							  <p><a href = "{% url 'logout' %}">Logout</a></p>
 							</div>
 

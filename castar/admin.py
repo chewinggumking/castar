@@ -17,7 +17,7 @@ class StarPhotosForm(forms.ModelForm):
     class Meta:
         model = StarPhotos
         fields = '__all__'
-#Validator to check photos do not exceed 10 photos per user
+    #Validator to check photos do not exceed 10 photos per user
     def clean_user(self):
         if 'user' in self.cleaned_data:
             refModel = StarPhotos.objects.filter(user=self.cleaned_data['user'])
