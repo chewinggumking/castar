@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 from .models import StarProfile, StarPhotos
+from .forms import PhotoForm
+
 
 # Create your views here.
 @login_required
@@ -36,15 +38,17 @@ def starlist(request):
 	context = {
 		"page_title" : page_title,
 		"users" : users,
-		
 	}
 	return render(request, 'list.html', context)
 
-
+@login_required
 def uploadpics(request, userid):
 	starpics = StarPhotos.objects.filter(user=int(userid))
+	form = PhotoForm()
 	context = {
 		"pics": starpics,
-		"title": "Upload Your Pics here"
+		"title": "Upload Your Pics here",
+		"form" : form,
+		"noPics": starpics.count()
 	}
 	return render(request, "uploadform.html", context)

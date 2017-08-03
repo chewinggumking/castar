@@ -5,7 +5,11 @@
 
 	
 	{% block content%}
+
+
 		{% if user.is_staff %}
+
+		
 		<ul>
 			{% for user in users %}
 			<li><a href = {{user.id}}>{{user.first_name}} {{user.last_name}}</a></li>
