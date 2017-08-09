@@ -43,12 +43,20 @@ def starlist(request):
 
 @login_required
 def uploadpics(request, userid):
-	starpics = StarPhotos.objects.filter(user=int(userid))
-	form = PhotoForm()
+	if request.method == "POST":
+		print (request.path)
+		form = PhotoForm(request.POST, request.FILES or None)
+		if form.is_valid():
+			instance = form.save(commit = False)
+			instance.user = request.user
+			instance.save()
+			return HttpResponseRedirect (reverse('homepage'))
+	else:
+		form = PhotoForm()
+
 	context = {
-		"pics": starpics,
 		"title": "Upload Your Pics here",
 		"form" : form,
-		"noPics": starpics.count()
+		
 	}
 	return render(request, "uploadform.html", context)
